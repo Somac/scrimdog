@@ -1,4 +1,4 @@
-package com.softala.controller;
+package com.scrimdog.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
