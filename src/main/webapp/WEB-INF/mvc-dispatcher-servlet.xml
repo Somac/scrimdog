@@ -1,0 +1,92 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<context:component-scan base-package="com.softala" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<mvc:view-controller path="/" view-name="index" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<context:property-placeholder location="classpath*:/db_connection.properties" />
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${db.driver}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+		<property name="initialSize" value="1" />
+		<property name="maxActive" value="5" />
+	</bean>
+
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="txManager" />
+
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1000000" />
+	</bean>
+
+	<sec:http auto-config="true" use-expressions="true">
+
+		<sec:intercept-url pattern="/*" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/*" access="permitAll" />
+
+		<sec:form-login 
+			login-page="/"
+			default-target-url="/" 
+			authentication-failure-url="/error"
+			username-parameter="username"
+			password-parameter="password" />
+		<sec:logout logout-success-url="/?logout" />
+
+	</sec:http>
+
+
+	<sec:authentication-manager>
+		<sec:authentication-provider>
+			<sec:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT username, password, true FROM User WHERE username=?"
+				authorities-by-username-query="
+					SELECT u.username, a.role
+					FROM User u JOIN User_authority ua
+					ON (u.user_id = ua.user_id)
+					JOIN Authority a
+					ON (a.role = ua.role)
+					WHERE u.username = ?" />
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+
+	<sec:global-method-security
+		pre-post-annotations="enabled" />
+
+
+</beans>
