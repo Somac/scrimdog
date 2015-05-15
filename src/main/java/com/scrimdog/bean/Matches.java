@@ -8,18 +8,29 @@ public class Matches {
 	private int homeGoals;
 	private int awayGoals;
 
+	private Team team;
+
 	public Matches() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Matches(int matchId, int homeTeam, int awayTeam, int homeGoals, int awayGoals) {
+	public Matches(int matchId, int homeTeam, int awayTeam, int homeGoals, int awayGoals, Team team) {
 		super();
 		this.matchId = matchId;
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
 		this.homeGoals = homeGoals;
 		this.awayGoals = awayGoals;
+		this.team = team;
+	}
+
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
 	public int getMatchId() {
