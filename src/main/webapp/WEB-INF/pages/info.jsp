@@ -15,8 +15,7 @@
 <div class="container">
 <t:header></t:header>
 <div class="content">
-<p>HOLA MUNDO</p>
-<div>Kovakoodausonparasta</div>
+<p>This is the info page.</p>
 </div>
 <footer class="footer">
 <p>&copy; Markus Ylinen &amp; Mikko Savinainen</p>
