@@ -7,8 +7,8 @@
 <head>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+<link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
 <title>Scrimdog - Your tournament manager</title>
 </head>
 <body>

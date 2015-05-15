@@ -7,6 +7,7 @@
 <head>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+<link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <title>Scrimdog - Your tournament manager</title>
@@ -18,9 +19,7 @@
 <p>HOLA MUNDO</p>
 <div>Kovakoodausonparasta</div>
 </div>
-<footer class="footer">
-<p>&copy; Markus Ylinen &amp; Mikko Savinainen</p>
-</footer>
+<t:footer></t:footer>
 </div>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-1.11.3.min.js" />"></script>
