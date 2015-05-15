@@ -16,13 +16,7 @@
 <div class="container">
 <t:header></t:header>
 <div class="content">
-<h3>Info</h3>
-<b>What is Scrimdog?</b>
-<p>Scrimdog is a tournament management tool system. You can make tournaments, put in the scores and it will automatically make your standings.</p>
-<b>Who made this?</b>
-<p>This project was made by two person team, Markus Ylinen and Mikko Savinainen.</p>
-<b>Why did you make this?</b>
-<p>To learn more about Java EE, Spring framework, databases and such.</p>
+<h3>Standings</h3>
 </div>
 <t:footer></t:footer>
 </div>

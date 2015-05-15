@@ -13,12 +13,14 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="./">Etusivu <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Ottelut</a></li>
-        <li><a href="#">Sarjataulukko</a></li>
+        <li><a href="./">Main <span class="sr-only">(current)</span></a></li>
+        <li><a href="matches">Matches</a></li>
+        <li><a href="standings">Standings</a></li>
+        <li><a href="info">Info</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="info">Info</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

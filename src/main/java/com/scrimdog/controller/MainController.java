@@ -16,4 +16,14 @@ public class MainController {
 	public String infoPage () {
 		return "info";
 	}
+	
+	@RequestMapping ("/matches")
+	public String matchPage () {
+		return "matches";
+	}
+	
+	@RequestMapping ("/standings")
+	public String standingsPage () {
+		return "standings";
+	}
 }
