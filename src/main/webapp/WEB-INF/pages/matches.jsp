@@ -33,9 +33,12 @@
 						test="${matches.homeScore==null && matches.awayScore==null}">
 						<div>
 							<form:form modelAttribute="matches"
-								action="setScore-${matches.matchId}">
+								action="setScore-${matches.matchId}-${matches.awayTeam}-${matches.homeTeam}">
+<%-- 								<input type="hidden" name="awayTeam" value="${matches.awayTeam}"/> --%>
+<%-- 								<input type="hidden" name="homeTeam" value="${mathces.homeTeam}"/> --%>
 								<input name="homeScore" />
 								<input name="awayScore" />
+								<input type="checkbox" name="tie" value="true"/>
 								<input type="submit" value="setScore" />
 							</form:form>
 						</div>

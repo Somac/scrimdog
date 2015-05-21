@@ -9,14 +9,15 @@ public class Matches {
 	private String awayScore;
 	private String homeTeamName;
 	private String awayTeamName;
-	
+	private boolean tie;
+
 	public Matches() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Matches(int matchId, int homeTeam, int awayTeam, String homeScore, String awayScore, String homeTeamName,
-			String awayTeamName) {
+			String awayTeamName, boolean tie) {
 		super();
 		this.matchId = matchId;
 		this.homeTeam = homeTeam;
@@ -25,6 +26,7 @@ public class Matches {
 		this.awayScore = awayScore;
 		this.homeTeamName = homeTeamName;
 		this.awayTeamName = awayTeamName;
+		this.tie = tie;
 	}
 
 	public int getMatchId() {
@@ -82,13 +84,23 @@ public class Matches {
 	public void setAwayTeamName(String awayTeamName) {
 		this.awayTeamName = awayTeamName;
 	}
+	
+	public boolean isTie() {
+		return tie;
+	}
+
+	public void setTie(boolean tie) {
+		this.tie = tie;
+	}
 
 	@Override
 	public String toString() {
-		return "Matches [matchId=" + matchId + ", homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", homeScore="
-				+ homeScore + ", awayScore=" + awayScore + ", homeTeamName=" + homeTeamName + ", awayTeamName="
-				+ awayTeamName + "]";
+		return "Matches [matchId=" + matchId + ", homeTeam=" + homeTeam
+				+ ", awayTeam=" + awayTeam + ", homeScore=" + homeScore
+				+ ", awayScore=" + awayScore + ", homeTeamName=" + homeTeamName
+				+ ", awayTeamName=" + awayTeamName + ", tie=" + tie + "]";
 	}
+
 	
 	
 

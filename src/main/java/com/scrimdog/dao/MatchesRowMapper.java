@@ -16,6 +16,8 @@ public class MatchesRowMapper implements RowMapper<Matches> {
 		m.setMatchId(rs.getInt("matches.match_id"));
 		m.setHomeTeamName(rs.getString("team_h.team_name"));
 		m.setAwayTeamName(rs.getString("team_a.team_name"));
+		m.setHomeTeam(rs.getInt("team_h.team_id"));
+		m.setAwayTeam(rs.getInt("team_a.team_id"));
 		m.setHomeScore(rs.getString("matches.home_score"));
 		m.setAwayScore(rs.getString("matches.away_score"));
 

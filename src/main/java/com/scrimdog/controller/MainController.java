@@ -43,20 +43,17 @@ public class MainController {
 		return "standings";
 	}
 
-	@RequestMapping(value = "/setScore-{match_id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String setScore(@PathVariable int match_id, @ModelAttribute("matches") Matches matches, BindingResult result, Model model,
+	@RequestMapping(value = "/setScore-{match_id}-{away_team}-{home_team}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String setScore(@PathVariable int match_id, @PathVariable int away_team, @PathVariable int home_team, @ModelAttribute("matches") Matches matches, BindingResult result, Model model,
 			RedirectAttributes redirectAttrs) {
 
 		if (result.hasErrors()) {
 			return "index";
 		}
 		
-		model.addAttribute("homeScore", matches.getHomeScore());
-		model.addAttribute("awayScore", matches.getAwayScore());
+		mService.setScore(matches.getHomeScore(), matches.getAwayScore(), match_id, home_team, away_team, matches.isTie());
 		
-		mService.setScore(matches.getHomeScore(), matches.getAwayScore(), match_id);
-		
-		String url = "/";
+		String url = "/matches";
 		return "redirect:" + url;
 	}
 }
