@@ -19,5 +19,9 @@ public class MatchesServiceImpl implements MatchesService{
 	public List<Matches> getAll() {
 		return dao.getAll();
 	}
+	public void setScore(String homeScore, String awayScore, int matchId) {
+		dao.setScore(homeScore, awayScore, matchId);
+
+	}
 
 }

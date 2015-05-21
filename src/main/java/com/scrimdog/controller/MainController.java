@@ -4,39 +4,59 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.scrimdog.bean.Matches;
 import com.scrimdog.service.MatchesService;
- 
+
 @Controller
 public class MainController {
-	
+
 	@Inject
 	MatchesService mService;
- 
-	@RequestMapping ("/")
-	public String mainPage () {
+
+	@RequestMapping("/")
+	public String mainPage() {
 		return "index";
 	}
-	
-	@RequestMapping ("/info")
-	public String infoPage () {
+
+	@RequestMapping("/info")
+	public String infoPage() {
 		return "info";
 	}
-	
-	@RequestMapping (value="/matches", method=RequestMethod.GET)
-	public String matchPage (Model model, @ModelAttribute("matches") Matches matches) {
-		
+
+	@RequestMapping(value = "/matches", method = RequestMethod.GET)
+	public String matchPage(Model model, @ModelAttribute("matches") Matches matches) {
+
 		model.addAttribute("matches", mService.getAll());
-		
+
 		return "matches";
 	}
-	
-	@RequestMapping ("/standings")
-	public String standingsPage () {
+
+	@RequestMapping("/standings")
+	public String standingsPage() {
 		return "standings";
+	}
+
+	@RequestMapping(value = "/setScore-{match_id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String setScore(@PathVariable int match_id, @ModelAttribute("matches") Matches matches, BindingResult result, Model model,
+			RedirectAttributes redirectAttrs) {
+
+		if (result.hasErrors()) {
+			return "index";
+		}
+		
+		model.addAttribute("homeScore", matches.getHomeScore());
+		model.addAttribute("awayScore", matches.getAwayScore());
+		
+		mService.setScore(matches.getHomeScore(), matches.getAwayScore(), match_id);
+		
+		String url = "/";
+		return "redirect:" + url;
 	}
 }

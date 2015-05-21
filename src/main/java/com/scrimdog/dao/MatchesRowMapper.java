@@ -6,22 +6,18 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.scrimdog.bean.Matches;
-import com.scrimdog.bean.Team;
 
 public class MatchesRowMapper implements RowMapper<Matches> {
 
 	@Override
 	public Matches mapRow(ResultSet rs, int r) throws SQLException {
 		Matches m = new Matches();
-		Team t = new Team();
 
 		m.setMatchId(rs.getInt("matches.match_id"));
-		t.setHomeTeamName(rs.getString("home_team"));
-		t.setAwayTeamName(rs.getString("away_team"));
-		m.setHomeGoals(rs.getInt("matches.home_goals"));
-		m.setAwayGoals(rs.getInt("matches.away_goals"));
-
-		m.setTeam(t);
+		m.setHomeTeamName(rs.getString("team_h.team_name"));
+		m.setAwayTeamName(rs.getString("team_a.team_name"));
+		m.setHomeScore(rs.getString("matches.home_score"));
+		m.setAwayScore(rs.getString("matches.away_score"));
 
 		return m;
 	}

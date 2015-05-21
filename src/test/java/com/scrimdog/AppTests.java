@@ -1,4 +1,4 @@
-package com.softala;
+package com.scrimdog;
 
 import org.junit.runner.RunWith;
 import org.junit.Test;

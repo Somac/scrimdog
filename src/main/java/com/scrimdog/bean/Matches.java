@@ -5,32 +5,26 @@ public class Matches {
 	private int matchId;
 	private int homeTeam;
 	private int awayTeam;
-	private int homeGoals;
-	private int awayGoals;
-
-	private Team team;
-
+	private String homeScore;
+	private String awayScore;
+	private String homeTeamName;
+	private String awayTeamName;
+	
 	public Matches() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Matches(int matchId, int homeTeam, int awayTeam, int homeGoals, int awayGoals, Team team) {
+	public Matches(int matchId, int homeTeam, int awayTeam, String homeScore, String awayScore, String homeTeamName,
+			String awayTeamName) {
 		super();
 		this.matchId = matchId;
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
-		this.homeGoals = homeGoals;
-		this.awayGoals = awayGoals;
-		this.team = team;
-	}
-
-	public Team getTeam() {
-		return team;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
+		this.homeScore = homeScore;
+		this.awayScore = awayScore;
+		this.homeTeamName = homeTeamName;
+		this.awayTeamName = awayTeamName;
 	}
 
 	public int getMatchId() {
@@ -57,26 +51,45 @@ public class Matches {
 		this.awayTeam = awayTeam;
 	}
 
-	public int getHomeGoals() {
-		return homeGoals;
+	public String getHomeScore() {
+		return homeScore;
 	}
 
-	public void setHomeGoals(int homeGoals) {
-		this.homeGoals = homeGoals;
+	public void setHomeScore(String homeScore) {
+		this.homeScore = homeScore;
 	}
 
-	public int getAwayGoals() {
-		return awayGoals;
+	public String getAwayScore() {
+		return awayScore;
 	}
 
-	public void setAwayGoals(int awayGoals) {
-		this.awayGoals = awayGoals;
+	public void setAwayScore(String awayScore) {
+		this.awayScore = awayScore;
+	}
+
+	public String getHomeTeamName() {
+		return homeTeamName;
+	}
+
+	public void setHomeTeamName(String homeTeamName) {
+		this.homeTeamName = homeTeamName;
+	}
+
+	public String getAwayTeamName() {
+		return awayTeamName;
+	}
+
+	public void setAwayTeamName(String awayTeamName) {
+		this.awayTeamName = awayTeamName;
 	}
 
 	@Override
 	public String toString() {
-		return "Matches [matchId=" + matchId + ", homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", homeGoals="
-				+ homeGoals + ", awayGoals=" + awayGoals + "]";
+		return "Matches [matchId=" + matchId + ", homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", homeScore="
+				+ homeScore + ", awayScore=" + awayScore + ", homeTeamName=" + homeTeamName + ", awayTeamName="
+				+ awayTeamName + "]";
 	}
+	
+	
 
 }

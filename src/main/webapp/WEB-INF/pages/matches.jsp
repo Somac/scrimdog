@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,8 +21,37 @@
 		<t:header></t:header>
 		<div class="content">
 			<h3>Matches</h3>
-			${matches}
+			<%-- 			${matches} --%>
+			<c:forEach items="${matches}" var="matches" varStatus="status">
+				Match <c:out value="${matches.matchId}"></c:out>
+				<br />
+				<c:out value="${matches.homeTeamName}"></c:out>
+				<c:out value="${matches.awayTeamName}"></c:out>
+				<br />
+				<c:choose>
+					<c:when
+						test="${matches.homeScore==null && matches.awayScore==null}">
+						<div>
+							<form:form modelAttribute="matches"
+								action="setScore-${matches.matchId}">
+								<input name="homeScore" />
+								<input name="awayScore" />
+								<input type="submit" value="setScore" />
+							</form:form>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<c:out value="${matches.homeScore}"></c:out>
+						<c:out value="${matches.awayScore}"></c:out>
+					</c:otherwise>
+				</c:choose>
+				<br />
+				<br />
+			</c:forEach>
 		</div>
+
+
+
 		<t:footer></t:footer>
 	</div>
 	<script type="text/javascript"
