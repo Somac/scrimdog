@@ -8,16 +8,13 @@ public class Team {
 	private int ties;
 	private int losses;
 	private int tournamentId;
-	private String awayTeamName;
-	private String homeTeamName;
 
 	public Team() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Team(int teamId, String teamName, int wins, int ties, int losses, int tournamentId, String awayTeamName,
-			String homeTeamName) {
+	public Team(int teamId, String teamName, int wins, int ties, int losses, int tournamentId) {
 		super();
 		this.teamId = teamId;
 		this.teamName = teamName;
@@ -25,24 +22,6 @@ public class Team {
 		this.ties = ties;
 		this.losses = losses;
 		this.tournamentId = tournamentId;
-		this.awayTeamName = awayTeamName;
-		this.homeTeamName = homeTeamName;
-	}
-
-	public String getAwayTeamName() {
-		return awayTeamName;
-	}
-
-	public void setAwayTeamName(String awayTeamName) {
-		this.awayTeamName = awayTeamName;
-	}
-
-	public String getHomeTeamName() {
-		return homeTeamName;
-	}
-
-	public void setHomeTeamName(String homeTeamName) {
-		this.homeTeamName = homeTeamName;
 	}
 
 	public int getTeamId() {
@@ -95,9 +74,9 @@ public class Team {
 
 	@Override
 	public String toString() {
-		return "Team [teamId=" + teamId + ", teamName=" + teamName + ", wins=" + wins + ", ties=" + ties + ", losses="
-				+ losses + ", tournamentId=" + tournamentId + ", awayTeamName=" + awayTeamName + ", homeTeamName="
-				+ homeTeamName + "]";
+		return "Team [teamId=" + teamId + ", teamName=" + teamName + ", wins="
+				+ wins + ", ties=" + ties + ", losses=" + losses
+				+ ", tournamentId=" + tournamentId + "]";
 	}
 
 }

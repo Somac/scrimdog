@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.scrimdog.bean.Matches;
+import com.scrimdog.bean.Team;
 import com.scrimdog.service.MatchesService;
+import com.scrimdog.service.StandingsService;
 
 @Controller
 public class MainController {
@@ -20,6 +22,9 @@ public class MainController {
 	@Inject
 	MatchesService mService;
 
+	@Inject
+	StandingsService sService;
+	
 	@RequestMapping("/")
 	public String mainPage() {
 		return "index";
@@ -39,7 +44,10 @@ public class MainController {
 	}
 
 	@RequestMapping("/standings")
-	public String standingsPage() {
+	public String standingsPage(Model model, @ModelAttribute("team") Team team) {
+		
+		model.addAttribute("team", sService.getAll());
+		
 		return "standings";
 	}
 
